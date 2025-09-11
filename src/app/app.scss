@@ -1,0 +1,72 @@
+// Theme colors 
+$light-blue: #add8e6;
+$orange: #ff7f50;
+$light-orange: #ffd580;
+
+// Import color, color.scale isn’t available in plain Sass 
+@use "sass:color";
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  form.d-flex {
+    margin-right: 1.5rem; 
+  }
+  min-height: 90px;
+  background-color: $orange !important;
+  .navbar-brand {
+    font-size: x-large;
+    font-weight: 700;
+    color: #fff !important;
+
+    &:hover {
+      color: lighten($orange, 20%) !important;
+    }
+  }
+
+  .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+
+    &:hover {
+      color: $light-blue !important;
+    }
+  }
+
+  .btn-outline-success {
+    border-color: #fff;
+    color: #fff;
+
+    &:hover {
+      background-color: $light-blue;
+      border-color: $light-blue;
+      color: #fff;
+    }
+  }
+
+  .btn-link.nav-link {
+    color: #ff0000 !important;
+    font-weight: 700;
+
+    &:hover {
+      color: $light-orange !important;
+      text-decoration: none;
+    }
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  router-outlet {
+    display: block;
+    margin-top: 2rem;
+  }
+}

@@ -1,0 +1,83 @@
+// Theme colors 
+$light-blue: #add8e6;
+$orange: #ff7f50;
+$light-orange: #ffd580;
+
+// Import color, color.scale isn’t available in plain Sass 
+@use "sass:color";
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  width: 100%;
+  background-color: darken($orange, 5%);
+  color: #fff;
+  padding: 2rem 0;
+  font-size: 0.9rem;
+  margin-top: auto; 
+
+  a {
+    color: lighten($orange, 35%);
+    text-decoration: none;
+
+    &:hover {
+      color: $light-blue;
+      text-decoration: underline;
+    }
+  }
+
+  h5 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: $light-orange;
+  }
+
+  .row {
+    margin-bottom: 1rem;
+  }
+
+  .text-center {
+    margin-top: 1.5rem;
+
+    small {
+      color: lighten($orange, 50%);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .row {
+      text-align: center;
+    }
+    .col-md-4 {
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+.footer-start {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  margin-top: 30px;
+  border-top: 1px solid #ccc; 
+}
+
+.footer-center {
+  flex: 1;
+  text-align: center;
+}
+
+.footer-right a {
+  margin-left: 10px;
+}

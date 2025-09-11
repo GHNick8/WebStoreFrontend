@@ -1,0 +1,7 @@
+// Theme colors 
+$light-blue: #add8e6;
+$orange: #ff7f50;
+$light-orange: #ffd580;
+
+// Import color, color.scale isn’t available in plain Sass 
+@use "sass:color";

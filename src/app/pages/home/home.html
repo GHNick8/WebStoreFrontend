@@ -1,0 +1,43 @@
+<div class="container mt-5">
+  <div class="text-center">
+    <h1>Welcome to My Demo Webshop</h1>
+    <p class="lead">A portfolio project showcasing full-stack e-commerce functionality.</p>
+    <a class="btn btn-primary me-2" [routerLink]="['/products']">Browse Products</a>
+    <a class="btn btn-outline-secondary" [routerLink]="['/offers']">On Sale</a>
+  </div>
+  <hr class="my-5">
+  <h2 class="text-center mb-4">Featured Products</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-4 col-sm-6" *ngFor="let p of featured">
+      <div class="card product-card mb-4 text-center">
+        <img *ngIf="p.imageUrl" [src]="p.imageUrl" class="card-img-top product-img" alt="{{p.name}}">
+        <div class="card-body">
+          <h6 class="card-title">{{ p.name }}</h6>
+          <p class="small text-muted">{{ p.description }}</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <span class="fw-bold">{{ p.price | currency }}</span>
+            <a [routerLink]="['/products']" class="btn btn-sm btn-primary">View</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="my-5">
+  <div class="row mt-4">
+    <div class="col-md-4 text-center">
+      <h4>Wishlist</h4>
+      <p>Save your favorite products for later.</p>
+      <a class="btn btn-sm btn-outline-primary" [routerLink]="['/wishlist']">Go to Wishlist</a>
+    </div>
+    <div class="col-md-4 text-center">
+      <h4>Cart</h4>
+      <p>Check out your selected products quickly.</p>
+      <a class="btn btn-sm btn-outline-primary" [routerLink]="['/cart']">View Cart</a>
+    </div>
+    <div class="col-md-4 text-center">
+      <h4>My Account</h4>
+      <p>Take a look at your account information.</p>
+      <a class="btn btn-sm btn-outline-primary" [routerLink]="['/account']">Go to Account</a>
+    </div>
+  </div>
+</div>

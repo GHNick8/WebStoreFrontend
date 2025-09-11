@@ -1,0 +1,46 @@
+<footer class="text-light mt-5 py-4">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>Shop</h5>
+        <ul class="list-unstyled">
+          <li><a class="text-light" [routerLink]="['/products']">All Products</a></li>
+          <li><a class="text-light" [routerLink]="['/offers']">On Sale</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Account</h5>
+        <ul class="list-unstyled">
+          <li><a class="text-light" [routerLink]="['/login']">Login</a></li>
+          <li><a class="text-light" [routerLink]="['/register']">Register</a></li>
+          <li><a class="text-light" [routerLink]="['/wishlist']">Wishlist</a></li>
+          <li><a class="text-light" [routerLink]="['/cart']">Cart</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Info</h5>
+        <ul class="list-unstyled">
+          <li><a class="text-light" [routerLink]="['/about']">About Us</a></li>
+          <li><a class="text-light" [routerLink]="['/contact']">Contact</a></li>
+          <li><a class="text-light" [routerLink]="['/privacy']">Privacy Policy</a></li>
+          <li><a class="text-light" [routerLink]="['/terms']">Terms & Conditions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-start mt-5">
+      <div class="footer-left"></div>   
+      <div class="footer-center">
+        <small>&copy; {{ currentYear }} My Webshop. All rights reserved.</small>
+      </div>
+      <small style="margin-right: 20px;">Connect with me:</small>
+      <div class="footer-right">
+        <a href="https://www.linkedin.com/in/nick-janssens-b73319345" target="_blank">
+          <img src="linkedin.png" alt="LinkedIn" width="30" height="30">
+        </a>
+        <a href="https://github.com/GHNick8/" target="_blank">
+          <img src="github.svg.png" alt="GitHub" width="30" height="30">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

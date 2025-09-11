@@ -1,0 +1,59 @@
+// Theme colors 
+$light-blue: #add8e6;
+$orange: #ff7f50;
+$light-orange: #ffd580;
+
+// Import color, color.scale isn’t available in plain Sass 
+@use "sass:color";
+
+.contact-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: lighten($light-orange, 40%);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px #000;
+
+  h2 {
+    text-align: center;
+    color: $orange;
+    margin-bottom: 1.5rem;
+  }
+
+  p {
+    text-align: center;
+    color: darken($orange, 10%);
+    margin-bottom: 2rem;
+  }
+
+  form {
+    .form-label {
+      font-weight: 600;
+      color: $orange;
+    }
+
+    .form-control {
+      border: 1px solid $orange;
+      border-radius: 5px;
+      &:focus {
+        border-color: $light-blue;
+        box-shadow: 0 0 5px rgba($light-blue, 0.5);
+      }
+    }
+
+    textarea.form-control {
+      resize: vertical;
+    }
+
+    .btn-primary {
+      background-color: $orange;
+      border-color: $orange;
+      &:hover {
+        background-color: darken($orange, 10%);
+        border-color: darken($orange, 10%);
+      }
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+}

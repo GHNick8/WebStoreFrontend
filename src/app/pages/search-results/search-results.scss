@@ -1,0 +1,70 @@
+// Theme colors 
+$light-blue: #add8e6;
+$orange: #ff7f50;
+$light-orange: #ffd580;
+
+// Import color, color.scale isn’t available in plain Sass 
+@use "sass:color";
+
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+
+  h3 {
+    color: $orange;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 1.5rem;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+
+    .col-md-4 {
+      display: flex;
+      flex-direction: column;
+
+      .card {
+        border-radius: 8px;
+        overflow: hidden;
+        transition: transform 0.2s, box-shadow 0.2s;
+
+        &:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 6px 15px #000;
+        }
+
+        .card-img-top {
+          width: 100%;
+          height: 200px;
+          object-fit: cover;
+        }
+
+        .card-body {
+          padding: 1rem;
+
+          .card-title {
+            color: $orange;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+          }
+
+          .card-text {
+            color: #333;
+            margin-bottom: 0.5rem;
+
+            strong {
+              color: $light-blue;
+            }
+          }
+        }
+      }
+    }
+  }
+}

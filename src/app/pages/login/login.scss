@@ -1,0 +1,29 @@
+// Theme colors 
+$light-blue: #add8e6;
+$orange: #ff7f50;
+$light-orange: #ffd580;
+
+// Import color, color.scale isn’t available in plain Sass 
+@use "sass:color";
+
+.container {
+  max-width: 400px;
+  background: $light-blue;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px #000;
+
+  h2 {
+    color: $orange;
+    font-weight: 700;
+  }
+
+  button {
+    background-color: $orange;
+    border: none;
+
+    &:hover {
+      background-color: darken($orange, 10%);
+    }
+  }
+}

@@ -1,1 +1,126 @@
-/* You can add global styles to this file, and also import other style files */
+// Theme colors 
+$light-blue: #add8e6;
+$orange: #ff7f50;
+$light-orange: #ffd580;
+
+// Import color, color.scale isn’t available in plain Sass 
+@use "sass:color";
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background: linear-gradient(135deg, $light-blue 0%, $light-orange 50%, $orange 100%);
+  background-attachment: fixed; 
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main.flex-fill {
+  flex: 1; 
+}
+
+.navbar {
+  min-height: 80px;
+  background-color: $orange !important;
+
+  .navbar-brand {
+    font-weight: 700;
+    color: #fff !important;
+
+    &:hover {
+      color: lighten($orange, 20%) !important;
+    }
+  }
+
+  .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+
+    &:hover {
+      color: $light-blue !important;
+    }
+  }
+
+  .btn-outline-success {
+    border-color: #fff;
+    color: #fff;
+
+    &:hover {
+      background-color: $light-blue;
+      border-color: $light-blue;
+      color: #fff;
+    }
+  }
+
+  .btn-link.nav-link {
+    color: #fff !important;
+
+    &:hover {
+      color: $light-orange !important;
+      text-decoration: none;
+    }
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+footer {
+  width: 100%;
+  background-color: darken($orange, 5%);
+  color: #fff;
+  padding: 2rem 0;
+  font-size: 0.9rem;
+  margin-top: auto;
+
+  a {
+    color: lighten($orange, 35%);
+    text-decoration: none;
+
+    &:hover {
+      color: $light-blue;
+      text-decoration: underline;
+    }
+  }
+
+  h5 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: $light-orange;
+  }
+
+  .row {
+    margin-bottom: 1rem;
+  }
+
+  .text-center {
+    margin-top: 1.5rem;
+
+    small {
+      color: lighten($orange, 50%);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .row {
+      text-align: center;
+    }
+    .col-md-4 {
+      margin-bottom: 1.5rem;
+    }
+  }
+}

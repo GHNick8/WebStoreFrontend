@@ -1,27 +1,36 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { CommonModule } from '@angular/common';
+import { Component, signal } from '@angular/core';
+import { RouterOutlet, RouterLink, Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
+import { CommonModule, NgIf } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { FooterComponent } from '../app/pages/footer/footer';
+import { CartService } from './services/cart.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule],
-  template: `
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" routerLink="/">WebStore</a>
-        <div class="navbar-nav">
-          <a class="nav-link" routerLink="/">Products</a>
-          <a class="nav-link" routerLink="/checkout">Checkout</a>
-          <a class="nav-link" routerLink="/login">Login</a>
-          <a class="nav-link" routerLink="/register">Register</a>
-        </div>
-      </div>
-    </nav>
-
-    <div class="container mt-3">
-      <router-outlet></router-outlet>
-    </div>
-  `
+  imports: [RouterOutlet,RouterLink, CommonModule, FormsModule, FooterComponent],
+  templateUrl: './app.html',
+  styleUrls: ['./app.scss']
 })
-export class AppComponent {}
+export class App {
+  protected readonly title = signal('store-frontend');
+
+  constructor(public auth: AuthService, public router: Router, private cart: CartService) {}
+
+  searchQuery: string = '';
+
+  get cartCount() { return this.cart.count(); }
+
+  onSearch() {
+    if (this.searchQuery.trim()) {
+      this.router.navigate(['/products'], { queryParams: { q: this.searchQuery } });
+      this.searchQuery = '';
+    }
+  }
+
+  logout() {
+    this.auth.logout();
+    this.router.navigate(['/login']);
+  }
+}
