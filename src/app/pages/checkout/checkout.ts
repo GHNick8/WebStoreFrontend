@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { CheckoutService } from '../../services/checkout.service';
 import { CreateOrderRequest } from '../../models/order.model';
+import { App } from '../../app';
 
 @Component({
   selector: 'app-checkout',
@@ -16,7 +17,11 @@ export class CheckoutComponent {
   placing = false;
   error: string | null = null;
 
-  constructor(private cart: CartService, private co: CheckoutService, private router: Router) {}
+  constructor(private cart: CartService, 
+    private co: CheckoutService, 
+    private router: Router, 
+    private app: App
+  ) {}
 
   get items() { return this.cart.getCart().items; }
   get total() { return this.cart.getCart().total; }
@@ -31,9 +36,10 @@ export class CheckoutComponent {
 
     this.placing = true;
     this.co.createOrder(payload).subscribe({
-      next: () => {
+      next: (res) => {
         this.cart.clear();
-        this.router.navigate(['/']); // or to an order confirmation page
+        this.app.showToast(`Order placed successfully! (#${res.id})\n — demo only, not a real order.`);
+        this.router.navigate(['/']); 
       },
       error: (e) => {
         this.error = e?.error?.error || 'Failed to place order';

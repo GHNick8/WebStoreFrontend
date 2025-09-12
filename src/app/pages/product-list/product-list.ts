@@ -4,6 +4,8 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { CartService } from '../../services/cart.service';
+import { App } from '../../app';
+import { WishlistService } from '../../services/wishlist.service';
 
 @Component({
   selector: 'app-product-list',
@@ -16,7 +18,12 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   filtered: Product[] = [];
 
-  constructor(private ps: ProductService, private cart: CartService, private route: ActivatedRoute) {}
+  constructor(private ps: ProductService, 
+    private cart: CartService, 
+    private app: App, 
+    private route: ActivatedRoute, 
+    private wishlist: WishlistService
+  ) {}
 
   ngOnInit() {
     this.ps.getAll().subscribe(p => {
@@ -39,6 +46,11 @@ export class ProductListComponent implements OnInit {
 
   addToCart(p: Product) {
     this.cart.add({ id: p.id, name: p.name, price: p.price, imageUrl: p.imageUrl }, 1);
-    alert('Added to cart!');
+    this.app.showToast(`${p.name} added to cart!`);
+  }
+
+  addToWishlist(p: Product) {
+    this.wishlist.add({ id: p.id, name: p.name, price: p.price, imageUrl: p.imageUrl });
+    this.app.showToast(`${p.name} added to wishlist.`);
   }
 }

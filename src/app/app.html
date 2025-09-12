@@ -1,6 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand mb-1" [routerLink]="['/']">StoreApp</a>
+    <a class="navbar-brand mb-1" [routerLink]="['/']">
+      Web Store <span class="badge bg-warning text-dark align-middle ms-1 mb-1">Demo</span>
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -14,22 +16,31 @@
           <a class="nav-link" [routerLink]="['/offers']">On Sale</a>
         </li>
       </ul>
-      <ul class="navbar-nav mb-1"><form class="d-flex" (ngSubmit)="onSearch()">
-          <input class="form-control me-2"
-                type="search"
-                placeholder="Search products"
-                [(ngModel)]="searchQuery"
-                name="search" />
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
+      <form class="d-flex" (ngSubmit)="onSearch()">
+        <input class="form-control me-2"
+          type="search"
+          placeholder="Search products"
+          [(ngModel)]="searchQuery"
+          name="search" />
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      <ul class="navbar-nav mb-1">
+        <a class="nav-link position-relative mt-1" routerLink="/wishlist">
+          Wishlist
+          <span *ngIf="wishlistCount > 0"
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
+            {{ wishlistCount }}
+          </span>
+        </a>
+        <a class="nav-link position-relative mt-1" routerLink="/cart">
+          Cart
+          <span *ngIf="cartCount > 0" 
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
+            {{ cartCount }}
+          </span>
+        </a>
         <li class="nav-item" *ngIf="auth.isLoggedIn">
           <a class="nav-link mt-1" [routerLink]="['/account']">Account</a>
-        </li>
-        <li class="nav-item" *ngIf="auth.isLoggedIn">
-          <a class="nav-link mt-1" [routerLink]="['/wishlist']">Wishlist</a>
-        </li>
-        <li class="nav-item" *ngIf="auth.isLoggedIn">
-          <a class="nav-link mt-1" [routerLink]="['/cart']">Cart</a>
         </li>
         <li class="nav-item" *ngIf="!auth.isLoggedIn">
           <a class="nav-link mt-1" [routerLink]="['/login']">Login</a>
@@ -44,6 +55,19 @@
     </div>
   </div>
 </nav>
+<div class="toast-container position-fixed top-0 end-0 p-3 top-offset">
+  <div *ngFor="let msg of toasts" 
+       class="toast align-items-center text-bg-success border-0 mb-2 show"
+       role="alert">
+    <div class="d-flex">
+      <div class="toast-body" style="white-space: pre-line;">
+        {{ msg }}
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" 
+              (click)="removeToast(msg)"></button>
+    </div>
+  </div>
+</div>
 <main class="flex-fill">
   <router-outlet></router-outlet>
 </main>

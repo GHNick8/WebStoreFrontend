@@ -10,14 +10,20 @@ import { PrivacyComponent } from './pages/privacy/privacy';
 import { TermsComponent } from './pages/terms/terms';
 import { CartComponent } from './pages/cart/cart';
 import { ProductListComponent } from './pages/product-list/product-list';
+import { OrderHistoryComponent } from './pages/order-history/order-history';
+import { AccountComponent } from './pages/account/account';
+import { WishlistComponent } from './pages/wishlist/wishlist';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'products', component: ProductListComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'account', component: AccountComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
+  { path: 'orders', component: OrderHistoryComponent },
+  { path: 'wishlist', component: WishlistComponent },
   { path: 'about', component: AboutComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'privacy', component: PrivacyComponent },

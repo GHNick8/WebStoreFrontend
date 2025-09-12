@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <h2>My Account</h2>
+  <hr>
+
+  <div *ngIf="token; else guestView">
+    <p><strong>Welcome,</strong> {{ username }}</p>
+
+    <ul class="list-group mb-3">
+      <li class="list-group-item">
+        <a routerLink="/orders">📦 My Orders</a>
+      </li>
+      <li class="list-group-item">
+        <a routerLink="/wishlist">❤️ My Wishlist</a>
+      </li>
+    </ul>
+
+    <button class="btn btn-outline-danger" (click)="logout()">Logout</button>
+  </div>
+
+  <ng-template #guestView>
+    <div class="alert alert-info">
+      <p>You’re not logged in.</p>
+      <p>
+        👉 <a routerLink="/login">Login</a> or 
+        <a routerLink="/register">Create an account</a> to view order history and access more features.
+      </p>
+    </div>
+  </ng-template>
+</div>

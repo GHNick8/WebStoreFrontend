@@ -20,16 +20,22 @@ $light-orange: #ffd580;
     color: $orange;
   }
 
-  .btn-primary {
+  .btn-outline-primary {
     background-color: $orange;
     border: none;
+    color: #fff580;
 
     &:hover {
       background-color: darken($orange, 10%);
     }
   }
 
-  .fw-bold {
-    color: $light-blue;
+  .btn-outline-secondary {
+    background-color: whitesmoke;
+    border: none;
+
+    &:hover {
+      background-color: darken($color: #FFB6C1, $amount: 10%);
+    }
   }
 }

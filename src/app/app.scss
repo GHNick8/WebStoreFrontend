@@ -55,7 +55,7 @@ body {
     font-weight: 700;
 
     &:hover {
-      color: $light-orange !important;
+      color: #dd0000 !important;
       text-decoration: none;
     }
   }
@@ -69,4 +69,8 @@ body {
     display: block;
     margin-top: 2rem;
   }
+}
+
+.toast-container.top-offset { 
+  margin-top: 90px;
 }

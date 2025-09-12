@@ -4,6 +4,7 @@ import { AuthService } from './services/auth.service';
 import { CommonModule, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { FooterComponent } from '../app/pages/footer/footer';
+import { WishlistService } from './services/wishlist.service';
 import { CartService } from './services/cart.service';
 
 @Component({
@@ -16,11 +17,31 @@ import { CartService } from './services/cart.service';
 export class App {
   protected readonly title = signal('store-frontend');
 
-  constructor(public auth: AuthService, public router: Router, private cart: CartService) {}
+  constructor(public auth: AuthService, 
+    public router: Router, 
+    private cart: CartService,
+    private wishlist: WishlistService
+  ) {
+    this.cart.count$.subscribe(c => this.cartCount = c);
+    this.wishlist.count$.subscribe(c => this.wishlistCount = c);
+  }
+
+  toasts: string[] = [];
 
   searchQuery: string = '';
 
-  get cartCount() { return this.cart.count(); }
+  wishlistCount = 0;
+
+  cartCount = 0;
+
+  showToast(message: string) {
+    this.toasts.push(message);
+    setTimeout(() => this.removeToast(message), 3000); 
+  }
+
+  removeToast(message: string) {
+    this.toasts = this.toasts.filter(m => m !== message);
+  }
 
   onSearch() {
     if (this.searchQuery.trim()) {
