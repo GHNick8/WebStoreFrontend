@@ -5,4 +5,6 @@ export interface Product {
   price: number;
   imageUrl?: string;
   stock: number;
+  onSale?: boolean;
+  originalPrice?: number;
 }

@@ -14,12 +14,11 @@ body {
   padding: 0;
 }
 
+/* Navbar */
 .navbar {
-  form.d-flex {
-    margin-right: 1.5rem; 
-  }
   min-height: 90px;
   background-color: $orange !important;
+
   .navbar-brand {
     font-size: x-large;
     font-weight: 700;
@@ -35,8 +34,13 @@ body {
     font-weight: 500;
 
     &:hover {
-      color: $light-blue !important;
+      color: darken(white, 10%) !important;
     }
+  }
+
+  .nav-link.active {
+    font-weight: 600;
+    color: $light-blue !important;
   }
 
   .btn-outline-success {
@@ -44,33 +48,97 @@ body {
     color: #fff;
 
     &:hover {
-      background-color: $light-blue;
-      border-color: $light-blue;
+      background-color: darken($orange, 10%);
       color: #fff;
+      font-weight: 500;
     }
   }
 
-  .btn-link.nav-link {
-    color: #ff0000 !important;
-    font-weight: 700;
-
-    &:hover {
-      color: #dd0000 !important;
-      text-decoration: none;
-    }
+  .logout-btn {
+    margin-left: 1rem;
+    font-weight: 600;
   }
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-
-  router-outlet {
-    display: block;
-    margin-top: 2rem;
-  }
-}
-
+/* Toast offset */
 .toast-container.top-offset { 
   margin-top: 90px;
+}
+
+/* Demo banner close button */
+.demo-banner .btn-close { 
+  top: -10px;        
+  font-size: 0.8rem;    
+}
+
+/* Search form */
+@media (min-width: 768px) {
+  .search-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-width: 300px;
+    margin-right: 1rem;
+
+    input {
+      flex: 1;
+      margin-right: 0.5rem;
+    }
+    button {
+      flex-shrink: 0;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  #navbarNav {
+    background-color: $orange;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 15px;
+    box-shadow: 1px 1px 4px 4px white;
+
+    // Make menu overlap content 
+    position: absolute;
+    top: 90px; 
+    left: 10px;
+    right: 10px;
+    z-index: 1050; 
+    min-height: calc(100vh - 90px); 
+  }
+
+  #navbarNav .nav-link {
+    display: block;
+    margin: 0.5rem 0;
+    font-weight: 500;
+  }
+
+  .search-form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin: 1rem auto;
+    max-width: 240px;
+
+    input {
+      margin-bottom: 0.5rem;
+      width: 100%;
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+
+  /* Icons row centered horizontally */
+  .icon-row {
+    justify-content: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 1rem;
+    padding-top: 1rem;
+
+    i {
+      font-size: 1rem;
+    }
+  }
 }

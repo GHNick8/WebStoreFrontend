@@ -5,24 +5,46 @@
     <a class="btn btn-primary me-2" [routerLink]="['/products']">Browse Products</a>
     <a class="btn btn-outline-secondary" [routerLink]="['/offers']">On Sale</a>
   </div>
+
   <hr class="my-5">
+
   <h2 class="text-center mb-4">Featured Products</h2>
   <div class="row justify-content-center">
     <div class="col-md-4 col-sm-6" *ngFor="let p of featured">
-      <div class="card product-card mb-4 text-center">
-        <img *ngIf="p.imageUrl" [src]="p.imageUrl" class="card-img-top product-img" alt="{{p.name}}">
+      <div class="card product-card mb-4 text-center position-relative">
+
+        
+        <a [routerLink]="['/products', p.id]" class="position-relative d-block">
+          <img *ngIf="p.imageUrl" [src]="p.imageUrl" class="card-img-top product-img" alt="{{p.name}}">
+        </a>
+
         <div class="card-body">
           <h6 class="card-title">{{ p.name }}</h6>
           <p class="small text-muted">{{ p.description }}</p>
+
           <div class="d-flex justify-content-between align-items-center">
-            <span class="fw-bold">{{ p.price | currency }}</span>
-            <a [routerLink]="['/products']" class="btn btn-sm btn-primary">View</a>
+            <!-- Price logic -->
+            <div *ngIf="p.onSale; else regularPrice">
+              <span class="text-muted text-decoration-line-through me-2">
+                {{ p.originalPrice | currency:'EUR':'symbol' }}
+              </span>
+              <span class="fw-bold text-danger">
+                {{ p.price | currency:'EUR':'symbol' }}
+              </span>
+            </div>
+            <ng-template #regularPrice>
+              <span class="fw-bold">{{ p.price | currency:'EUR':'symbol' }}</span>
+            </ng-template>
+
+            <a [routerLink]="['/products', p.id]" class="btn btn-sm btn-primary">View</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+
   <hr class="my-5">
+
   <div class="row mt-4">
     <div class="col-md-4 text-center">
       <h4>Wishlist</h4>

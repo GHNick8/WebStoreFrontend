@@ -2,7 +2,6 @@ import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login';
 import { RegisterComponent } from './pages/register/register';
 import { CheckoutComponent } from './pages/checkout/checkout';
-import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './pages/home/home';
 import { AboutComponent } from './pages/about/about';
 import { ContactComponent } from './pages/contact/contact';
@@ -13,10 +12,14 @@ import { ProductListComponent } from './pages/product-list/product-list';
 import { OrderHistoryComponent } from './pages/order-history/order-history';
 import { AccountComponent } from './pages/account/account';
 import { WishlistComponent } from './pages/wishlist/wishlist';
+import { ProductDetailComponent } from './pages/product-detail/product-detail';
+import { OffersComponent } from './pages/offers/offers';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'products', component: ProductListComponent },
+  { path: 'products/:id', component: ProductDetailComponent },
+  { path: 'offers', component: OffersComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'account', component: AccountComponent },

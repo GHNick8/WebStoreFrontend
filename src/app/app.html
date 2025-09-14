@@ -1,60 +1,80 @@
+<div *ngIf="showBanner" 
+     class="alert alert-warning alert-dismissible fade show text-center mb-0 py-1 demo-banner"
+     role="alert">
+  ⚠️ This is a <strong>demo project</strong> — no real transactions are made.
+  <button type="button" class="btn-close" aria-label="Close" (click)="dismissBanner()"></button>
+</div>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
+    <!-- Brand -->
     <a class="navbar-brand mb-1" [routerLink]="['/']">
       Web Store <span class="badge bg-warning text-dark align-middle ms-1 mb-1">Demo</span>
     </a>
+
+    <!-- Toggler -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+
+    <!-- Collapsible content -->
     <div class="collapse navbar-collapse mt-3" id="navbarNav">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-left: 20px;">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/products']">Products</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/offers']">On Sale</a>
-        </li>
-      </ul>
-      <form class="d-flex" (ngSubmit)="onSearch()">
+
+      <!-- Search bar -->
+      <form class="search-form my-2 my-lg-0" (ngSubmit)="onSearch()">
         <input class="form-control me-2"
-          type="search"
-          placeholder="Search products"
-          [(ngModel)]="searchQuery"
-          name="search" />
+               type="search"
+               placeholder="Search products"
+               [(ngModel)]="searchQuery"
+               name="search" />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-      <ul class="navbar-nav mb-1">
-        <a class="nav-link position-relative mt-1" routerLink="/wishlist">
-          Wishlist
+
+      <!-- Nav links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/products" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/offers" routerLinkActive="active">On Sale</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/cart" routerLinkActive="active">Cart</a>
+        </li>
+        <li class="nav-item" *ngIf="!auth.isLoggedIn">
+          <a class="nav-link" routerLink="/login" routerLinkActive="active">Login</a>
+        </li>
+        <li class="nav-item" *ngIf="!auth.isLoggedIn">
+          <a class="nav-link" routerLink="/register" routerLinkActive="active">Register</a>
+        </li>
+      </ul>
+
+      <!-- Icons row -->
+      <div class="icon-row d-flex align-items-center gap-3">
+        <a class="nav-link position-relative" routerLink="/wishlist">
+          <i class="bi bi-heart"></i>
           <span *ngIf="wishlistCount > 0"
                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
             {{ wishlistCount }}
           </span>
         </a>
-        <a class="nav-link position-relative mt-1" routerLink="/cart">
-          Cart
-          <span *ngIf="cartCount > 0" 
+        <a class="nav-link position-relative" routerLink="/cart">
+          <i class="bi bi-cart"></i>
+          <span *ngIf="cartCount > 0"
                 class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success">
             {{ cartCount }}
           </span>
         </a>
-        <li class="nav-item" *ngIf="auth.isLoggedIn">
-          <a class="nav-link mt-1" [routerLink]="['/account']">Account</a>
-        </li>
-        <li class="nav-item" *ngIf="!auth.isLoggedIn">
-          <a class="nav-link mt-1" [routerLink]="['/login']">Login</a>
-        </li>
-        <li class="nav-item" *ngIf="!auth.isLoggedIn">
-          <a class="nav-link mt-1" [routerLink]="['/register']">Register</a>
-        </li>
-        <li class="nav-item" *ngIf="auth.isLoggedIn">
-          <button class="btn btn-link nav-link mt-1" style="margin-left: 14px;" (click)="auth.logout()">Logout</button>
-        </li>
-      </ul>
+        <a *ngIf="auth.isLoggedIn" class="nav-link" routerLink="/account">
+          <i class="bi bi-person-circle"></i>
+        </a>
+        <button *ngIf="auth.isLoggedIn" class="btn btn-danger btn-sm logout-btn" (click)="auth.logout()">Logout</button>
+      </div>
     </div>
   </div>
 </nav>
+
+<!-- Toast notifications -->
 <div class="toast-container position-fixed top-0 end-0 p-3 top-offset">
   <div *ngFor="let msg of toasts" 
        class="toast align-items-center text-bg-success border-0 mb-2 show"
@@ -68,6 +88,8 @@
     </div>
   </div>
 </div>
+
+<!-- Main -->
 <main class="flex-fill">
   <router-outlet></router-outlet>
 </main>

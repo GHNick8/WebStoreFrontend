@@ -2,25 +2,44 @@
   <h2>My Wishlist</h2>
   <hr>
 
-  <div *ngIf="items.length === 0" class="text-center py-5">
-    <h5>No items in wishlist</h5>
-  </div>
+  <!-- Show prompt if not logged in -->
+  <ng-container *ngIf="auth.isLoggedIn; else loginPrompt">
+    
+    <!-- Wishlist content -->
+    <div *ngIf="items.length === 0" class="text-center py-5">
+      <h5>No items in wishlist</h5>
+    </div>
 
-  <div class="row">
-    <div *ngFor="let item of items" class="col-md-4 mb-4">
-      <div class="card h-100 shadow-sm">
-        <img *ngIf="item.imageUrl" [src]="item.imageUrl" class="card-img-top" [alt]="item.name">
-        <div class="card-body d-flex flex-column">
-          <h5 class="card-title">{{ item.name }}</h5>
-          <p class="card-text">{{ item.price | currency }}</p>
-          <div class="mt-auto">
-            <button class="btn btn-sm btn-primary me-2" (click)="moveToCart(item)">Move to Cart</button>
-            <button class="btn btn-sm btn-outline-danger" (click)="remove(item.id)">Remove</button>
+    <div class="row">
+      <div *ngFor="let item of items" class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm">
+          <img *ngIf="item.imageUrl" [src]="item.imageUrl" class="card-img-top" [alt]="item.name">
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">{{ item.name }}</h5>
+            <p class="card-text">{{ item.price | currency:'EUR':'symbol' }}</p>
+            <div class="mt-auto">
+              <button class="btn btn-sm btn-primary me-2" (click)="moveToCart(item)">Move to Cart</button>
+              <button class="btn btn-sm btn-outline-danger" (click)="remove(item.id)">Remove</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <button *ngIf="items.length > 0" class="btn btn-outline-secondary mt-3" (click)="clear()">Clear Wishlist</button>
+    <button *ngIf="items.length > 0" 
+            class="btn btn-outline-secondary mt-3" 
+            (click)="clear()">
+      Clear Wishlist
+    </button>
+  </ng-container>
+
+  <!-- Login/Register Prompt -->
+  <ng-template #loginPrompt>
+    <div class="alert alert-info text-center mt-5">
+      <h5>🔒 Wishlist is for registered users</h5>
+      <p>Login or create an account to save your favorite products.</p>
+      <a class="btn btn-primary me-2" routerLink="/login">Login</a>
+      <a class="btn btn-outline-secondary custom-register-btn" routerLink="/register">Register</a>
+    </div>
+  </ng-template>
 </div>

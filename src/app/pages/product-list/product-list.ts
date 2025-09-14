@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
 import { CommonModule, CurrencyPipe } from '@angular/common';
@@ -10,7 +10,7 @@ import { WishlistService } from '../../services/wishlist.service';
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe], 
+  imports: [CommonModule, RouterModule, CurrencyPipe], 
   templateUrl: './product-list.html',
   styleUrls: ['./product-list.scss']
 })

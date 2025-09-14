@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet, RouterLink, Router } from '@angular/router';
+import { RouterOutlet, RouterLink, Router, RouterLinkActive } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { CommonModule, NgIf } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +10,7 @@ import { CartService } from './services/cart.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,RouterLink, CommonModule, FormsModule, FooterComponent],
+  imports: [RouterOutlet,RouterLink, RouterLinkActive, CommonModule, FormsModule, FooterComponent],
   templateUrl: './app.html',
   styleUrls: ['./app.scss']
 })
@@ -24,6 +24,8 @@ export class App {
   ) {
     this.cart.count$.subscribe(c => this.cartCount = c);
     this.wishlist.count$.subscribe(c => this.wishlistCount = c);
+    const dismissed = localStorage.getItem('demoBannerDismissed');
+    this.showBanner = !dismissed;
   }
 
   toasts: string[] = [];
@@ -34,6 +36,8 @@ export class App {
 
   cartCount = 0;
 
+  showBanner = true;
+
   showToast(message: string) {
     this.toasts.push(message);
     setTimeout(() => this.removeToast(message), 3000); 
@@ -41,6 +45,11 @@ export class App {
 
   removeToast(message: string) {
     this.toasts = this.toasts.filter(m => m !== message);
+  }
+
+  dismissBanner() {
+    this.showBanner = false;
+    localStorage.setItem('demoBannerDismissed', 'true');
   }
 
   onSearch() {

@@ -4,6 +4,7 @@ import { WishlistService } from '../../services/wishlist.service';
 import { WishlistItem } from '../../models/wishlist.model';
 import { CartService } from '../../services/cart.service';
 import { App } from '../../app';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -17,7 +18,8 @@ export class WishlistComponent implements OnInit {
 
   constructor(private wishlist: WishlistService, 
     private cart: CartService,
-    private app: App
+    private app: App,
+    public auth: AuthService
   ) {}
 
   ngOnInit(): void {
