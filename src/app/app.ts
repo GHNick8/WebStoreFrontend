@@ -10,7 +10,7 @@ import { CartService } from './services/cart.service';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,RouterLink, RouterLinkActive, CommonModule, FormsModule, FooterComponent],
+  imports: [RouterOutlet,RouterLink, RouterLinkActive, CommonModule, FormsModule, FooterComponent, NgIf],
   templateUrl: './app.html',
   styleUrls: ['./app.scss']
 })

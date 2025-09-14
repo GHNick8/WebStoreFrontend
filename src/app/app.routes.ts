@@ -14,6 +14,7 @@ import { AccountComponent } from './pages/account/account';
 import { WishlistComponent } from './pages/wishlist/wishlist';
 import { ProductDetailComponent } from './pages/product-detail/product-detail';
 import { OffersComponent } from './pages/offers/offers';
+import { AdminComponent } from './pages/admin/admin';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,6 +23,7 @@ export const routes: Routes = [
   { path: 'offers', component: OffersComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'admin', component: AdminComponent },
   { path: 'account', component: AccountComponent },
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },

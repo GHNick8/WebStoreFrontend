@@ -1,0 +1,46 @@
+<div class="container mt-4" *ngIf="auth.isAdmin; else noAccess">
+  <h2>Admin Panel</h2>
+  <hr>
+  <div class="mb-4">
+    <h5>Add Product</h5>
+    <input [(ngModel)]="newProduct.name" placeholder="Name" class="form-control mb-2">
+    <input [(ngModel)]="newProduct.description" placeholder="Description" class="form-control mb-2">
+    <input [(ngModel)]="newProduct.price" type="number" placeholder="Price" class="form-control mb-2">
+    <input [(ngModel)]="newProduct.stock" type="number" placeholder="Stock" class="form-control mb-2">
+    <button class="btn btn-primary" (click)="addProduct()">Add</button>
+  </div>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Stock</th>
+        <th>On Sale</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of products">
+        <td>{{ p.name }}</td>
+        <td>
+          <input [(ngModel)]="p.stock" type="number" class="form-control" style="width: 80px; display:inline-block;">
+          <button class="btn btn-sm btn-secondary ms-2" (click)="updateStock(p)">Save</button>
+        </td>
+        <td>
+          <span class="badge" [ngClass]="p.onSale ? 'bg-success' : 'bg-secondary'">
+            {{ p.onSale ? 'Yes' : 'No' }}
+          </span>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-warning" (click)="toggleSale(p)">
+            Toggle Sale
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noAccess>
+  <div class="alert alert-danger mt-5 text-center">
+    You don’t have access to the admin panel.
+  </div>
+</ng-template>

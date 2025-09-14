@@ -13,7 +13,10 @@
     <div class="col-md-4 col-sm-6" *ngFor="let p of featured">
       <div class="card product-card mb-4 text-center position-relative">
 
-        
+        <div class="card h-100 position-relative">
+          <span *ngIf="p.onSale" class="sale-badge">SALE</span>
+        </div>
+
         <a [routerLink]="['/products', p.id]" class="position-relative d-block">
           <img *ngIf="p.imageUrl" [src]="p.imageUrl" class="card-img-top product-img" alt="{{p.name}}">
         </a>
