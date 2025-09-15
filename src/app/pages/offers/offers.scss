@@ -1,0 +1,128 @@
+// Theme colors 
+$light-blue: #add8e6;
+$orange: #ff7f50;
+$light-orange: #ffd580;
+
+// Import color, color.scale isn’t available in plain Sass 
+@use "sass:color";
+
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+
+  h2 {
+    color: red;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+
+  hr {
+    border: none;
+    height: 2px;
+    background: $orange;
+    margin-bottom: 2rem;
+  }
+
+  .card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    img {
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+
+      .card-title {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+
+        a {
+          color: #333;
+          text-decoration: none;
+
+          &:hover {
+            color: $orange;
+          }
+        }
+      }
+
+      .card-text {
+        font-size: 0.9rem;
+        color: #555;
+      }
+
+      .text-decoration-line-through {
+        font-size: 0.9rem;
+        color: #999 !important;
+      }
+
+      .fw-bold.text-danger {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .text-center {
+    color: #666;
+
+    h4 {
+      color: $orange;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .offers-container {
+    padding: 0 1rem;
+
+    .card img {
+      height: 140px;
+    }
+  }
+}
+
+.btn-outline-primary {
+    background-color: $orange;
+    border: none;
+    color: #fff580;
+
+    &:hover {
+      background-color: darken($orange, 10%);
+    }
+}
+
+.btn-outline-secondary {
+    background-color: whitesmoke;
+    border: none;
+
+    &:hover {
+    background-color: darken($color: #FFB6C1, $amount: 10%);
+    }
+}
+
+.card::before {
+    content: "SALE";
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }

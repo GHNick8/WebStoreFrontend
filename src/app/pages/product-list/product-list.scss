@@ -9,18 +9,46 @@ $light-orange: #ffd580;
 .card {
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  transition: transform 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  background-color: #fff;
 
   &:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
   }
 
-  .card-title {
-    color: $orange;
+  img {
+    height: 180px;
+    object-fit: cover;
   }
 
-  .btn-outline-primary {
+  .card-body {
+    display: flex;
+    flex-direction: column;
+
+    .card-title {
+      color: $orange;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .text-decoration-line-through {
+      font-size: 0.85rem;
+      color: #999 !important;
+    }
+
+    .fw-bold.text-danger {
+      font-size: 1rem;
+    }
+
+    .btn-outline-primary {
     background-color: $orange;
     border: none;
     color: #fff580;
@@ -35,7 +63,38 @@ $light-orange: #ffd580;
     border: none;
 
     &:hover {
-      background-color: darken($color: #FFB6C1, $amount: 10%);
+    background-color: darken($color: #FFB6C1, $amount: 10%);
     }
+  }
+  }
+}
+
+@media (max-width: 992px) {
+  .card img {
+    height: 150px;
+  }
+
+  .card-body {
+    .card-title {
+      font-size: 0.95rem;
+    }
+    .card-text {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+.pagination {
+  .page-link {
+    color: $orange;
+    border: 1px solid lighten($orange, 30%);
+    &:hover {
+      background-color: lighten($orange, 40%);
+    }
+  }
+  .active .page-link {
+    background-color: $orange;
+    border-color: $orange;
+    color: white;
   }
 }

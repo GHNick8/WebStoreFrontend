@@ -1,59 +1,144 @@
-# WebstoreUi
+🛒 Web Store Demo (Angular + Spring Boot)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.2.
+This is a full-stack e-commerce demo project built with Angular (frontend) and Spring Boot (backend).
+It showcases a complete shopping experience: browsing products, adding to cart/wishlist, placing orders, and admin product management.
 
-## Development server
+⚠️ Note: This is a demo project — no real payments or transactions are processed.
 
-To start a local development server, run:
+✨ Features
+👤 Authentication & Accounts
 
-```bash
+Register & login with JWT authentication
+
+Role-based access:
+
+ROLE_USER → shopping features
+
+ROLE_ADMIN → manage products
+
+Account page with order history & wishlist
+
+🛍️ Shopping
+
+Product list with search & pagination
+
+Product detail page
+
+Wishlist (local persistence)
+
+Cart with quantity controls and checkout
+
+Order placement (with fake demo banner)
+
+Order history for logged-in users
+
+💸 Sales & Discounts
+
+Products can be marked On Sale with original + discounted price
+
+SALE badge on product cards
+
+On Sale page listing all discounted products
+
+🛠️ Admin (light version)
+
+Admin-only access to add/edit/delete products
+
+Image upload support
+
+Role check for secure access
+
+🎨 UI/UX
+
+Responsive mobile-first design (Bootstrap + SCSS)
+
+Styled components (cart, checkout, orders, wishlist, account)
+
+Toast notifications for cart/wishlist actions
+
+Dismissible top demo banner
+
+Custom theme colors ($orange, $light-blue, $light-orange)
+
+🖥️ Tech Stack
+Frontend
+
+Angular 17 (standalone components)
+
+Bootstrap 5 + SCSS for styling
+
+RxJS BehaviorSubject for cart/wishlist state
+
+Angular Router
+
+Backend
+
+Spring Boot 3
+
+Spring Security (JWT authentication)
+
+Hibernate / JPA with MySQL
+
+REST API
+
+⚡ Getting Started
+Backend (Spring Boot)
+
+Clone repo and open backend project.
+
+Configure application.properties (MySQL, JWT secret).
+
+Run the backend:
+
+./mvnw spring-boot:run
+
+
+API runs at http://localhost:8080/api
+
+Frontend (Angular)
+
+Clone frontend project.
+
+Install dependencies:
+
+npm install
+
+
+Run dev server:
+
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+App runs at http://localhost:4200
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+📸 Screenshots
 
-```bash
-ng generate component component-name
-```
+🏠 Home page (featured products, navigation)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+🛍️ Product list with pagination
 
-```bash
-ng generate --help
-```
+🔎 Product detail
 
-## Building
+🧺 Cart & checkout
 
-To build the project run:
+❤️ Wishlist
 
-```bash
-ng build
-```
+📦 Orders
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+⚙️ Admin panel
 
-## Running unit tests
+🚀 Roadmap / Possible Improvements
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+ Implement full admin dashboard (categories, stock management)
 
-```bash
-ng test
-```
+ Add product reviews & ratings
 
-## Running end-to-end tests
+ Email notifications (order confirmation)
 
-For end-to-end (e2e) testing, run:
+ Real payment integration (Stripe/PayPal)
 
-```bash
-ng e2e
-```
+ Docker setup for easy deployment
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+📜 License
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+MIT License — free to use and adapt.

@@ -5,6 +5,7 @@ import { CartService } from '../../services/cart.service';
 import { CheckoutService } from '../../services/checkout.service';
 import { CreateOrderRequest } from '../../models/order.model';
 import { App } from '../../app';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-checkout',
@@ -20,7 +21,8 @@ export class CheckoutComponent {
   constructor(private cart: CartService, 
     private co: CheckoutService, 
     private router: Router, 
-    private app: App
+    private app: App,
+    public auth: AuthService
   ) {}
 
   get items() { return this.cart.getCart().items; }

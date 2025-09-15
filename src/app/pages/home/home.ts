@@ -21,7 +21,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
     this.ps.getAll().subscribe(prods => {
-      this.featured = prods.slice(0, 2);
+      // first two products
+      // this.featured = prods.slice(0, 2);
+      const featuredIds = [10, 18]; 
+      this.featured = prods.filter(p => featuredIds.includes(p.id));
     });
   }
 }

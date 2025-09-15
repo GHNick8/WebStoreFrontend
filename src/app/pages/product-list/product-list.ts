@@ -18,6 +18,10 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
   filtered: Product[] = [];
 
+  pageSize = 9;
+  currentPage = 1;
+  totalPages = 1;
+
   constructor(private ps: ProductService, 
     private cart: CartService, 
     private app: App, 
@@ -29,6 +33,7 @@ export class ProductListComponent implements OnInit {
     this.ps.getAll().subscribe(p => {
       this.products = p;
       this.applyFilter();
+      this.totalPages = Math.ceil(this.filtered.length / this.pageSize);
     });
 
     this.route.queryParams.subscribe(() => this.applyFilter());
@@ -52,5 +57,16 @@ export class ProductListComponent implements OnInit {
   addToWishlist(p: Product) {
     this.wishlist.add({ id: p.id, name: p.name, price: p.price, imageUrl: p.imageUrl });
     this.app.showToast(`${p.name} added to wishlist.`);
+  }
+
+  get paginatedProducts(): Product[] {
+    const start = (this.currentPage - 1) * this.pageSize;
+    return this.filtered.slice(start, start + this.pageSize);
+  }
+
+  changePage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+    }
   }
 }

@@ -5,11 +5,12 @@ import { WishlistItem } from '../../models/wishlist.model';
 import { CartService } from '../../services/cart.service';
 import { App } from '../../app';
 import { AuthService } from '../../services/auth.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-wishlist',
   standalone: true,
-  imports: [CommonModule, CurrencyPipe],
+  imports: [CommonModule, CurrencyPipe, RouterModule],
   templateUrl: './wishlist.html', 
   styleUrls: ['./wishlist.scss']
 })
