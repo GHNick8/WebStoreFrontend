@@ -3,7 +3,7 @@
   <hr>
 
   <div *ngIf="token; else guestView">
-    <p><strong>Welcome,</strong> {{ username }}</p>
+    <p>Welcome, {{ auth.userEmail }}</p>
 
     <ul class="list-group mb-3">
       <li class="list-group-item">

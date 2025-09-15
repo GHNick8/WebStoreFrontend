@@ -7,7 +7,7 @@ $light-orange: #ffd580;
 @use "sass:color";
 
 .container {
-  width: 100%;
+  width: 60%;
   margin: 0 auto;
   background: linear-gradient(135deg, $light-blue 0%, $light-orange 100%);
   padding: 1.5rem; 

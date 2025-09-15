@@ -1,6 +1,7 @@
 export interface AuthResponse {
   token: string;
   role: string;
+  email: string;
 }
 
 export interface LoginRequest {

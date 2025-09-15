@@ -1,0 +1,13 @@
+// Theme colors 
+$light-blue: #add8e6;
+$orange: #ff7f50;
+$light-orange: #ffd580;
+
+// Import color, color.scale isn’t available in plain Sass 
+@use "sass:color";
+
+p {
+    font-weight: 700;
+    margin-left: 7px;
+    color: darken($light-blue, 20%);
+}

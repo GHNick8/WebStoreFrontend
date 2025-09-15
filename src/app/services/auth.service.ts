@@ -16,6 +16,7 @@ export class AuthService {
       tap(res => {
         localStorage.setItem(this.tokenKey, res.token);
         localStorage.setItem('role', res.role); 
+        localStorage.setItem("userEmail", res.email);
       })
     );
   }
@@ -39,4 +40,9 @@ export class AuthService {
   get isAdmin(): boolean {
     return localStorage.getItem(this.roleKey) === 'ROLE_ADMIN';
   }
+
+  get userEmail(): string | null {
+    return localStorage.getItem("userEmail");
+  }
+
 }
